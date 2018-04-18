@@ -14,6 +14,10 @@ export class PhotoService {
     return await this.photoRepository.save(photo);
   }
 
+  async update(id:number,photo: Photo) {
+    return await this.photoRepository.updateById(id,photo);
+  }
+
   async findAll(): Promise<Photo[]> {
     return await this.photoRepository.find();
   }
