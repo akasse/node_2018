@@ -22,6 +22,10 @@ export class PhotoService {
     return await this.photoRepository.removeById(id);
   }
 
+  async getOne(id:number):Promise<Photo> {
+    return await this.photoRepository.findOneById(id);
+  }
+
   async findAll(): Promise<Photo[]> {
     return await this.photoRepository.find();
   }

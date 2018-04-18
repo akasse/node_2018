@@ -11,6 +11,11 @@ export class PhotoController {
     return this.photoService.findAll();
   }
 
+  @Get(":id")
+  findOne(@Param() params): Promise<Photo> {
+    return this.photoService.getOne(params.id);
+  }
+
   @Post()
   async create(@Res() res, @Body() photo:Photo) {
     let ph = await this.photoService.create(photo);
