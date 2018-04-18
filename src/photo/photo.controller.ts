@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, HttpStatus, Res, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, HttpStatus, Res, Put, Delete, Param } from '@nestjs/common';
 import { PhotoService } from './photo.service';
 import { Photo } from './photo.entity';
 
@@ -22,4 +22,11 @@ export class PhotoController {
     let ph = await this.photoService.update(photo.id,photo);
     res.status(HttpStatus.CREATED).send(ph);
   }
+
+  @Delete(":id")
+  async delete(@Res() res, @Param() params) {
+    let ph = await this.photoService.delete(params.id);
+    res.status(HttpStatus.OK).send({"message":"suppression fait"});
+  }
+
 }

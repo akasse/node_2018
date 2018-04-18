@@ -18,6 +18,10 @@ export class PhotoService {
     return await this.photoRepository.updateById(id,photo);
   }
 
+  async delete(id:number) {
+    return await this.photoRepository.removeById(id);
+  }
+
   async findAll(): Promise<Photo[]> {
     return await this.photoRepository.find();
   }
