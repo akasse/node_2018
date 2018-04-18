@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, HttpStatus, Res, Put, Delete, Param, HttpException } from '@nestjs/common';
+import { Controller, Get, Post, Body, HttpStatus, Res, Put, Delete, Param, HttpException, ParseIntPipe } from '@nestjs/common';
 import { PhotoService } from './photo.service';
 import { Photo } from './photo.entity';
 
@@ -24,9 +24,10 @@ export class PhotoController {
   }
 
   @Get(":id")
-  async findOne(@Res() res, @Param() params) {
+  async findOne(@Res() res, @Param('id', new ParseIntPipe())
+  id) {
     try {
-      let ph = await this.photoService.getOne(params.id);
+      let ph = await this.photoService.getOne(id);
       let data = { data: ph, error: 0, message: "OK" }
       res.status(HttpStatus.OK).send(data);
     } catch (error) {

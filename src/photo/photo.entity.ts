@@ -2,25 +2,25 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { IsString, IsInt, IsBoolean } from 'class-validator';
 @Entity()
 export class Photo {
-  @PrimaryGeneratedColumn() id: number;
+  @PrimaryGeneratedColumn() readonly id: number;
 
   @IsString()
   @Column({ length: 500 })
-  name: string;
+  readonly name: string;
   
   @IsString()
   @Column('text') 
-  description: string;
+  readonly description: string;
   
   @IsString()
   @Column() 
-  filename: string;
+  readonly filename: string;
 
-  @IsString()
+  @IsInt()
   @Column('int') 
-  views: number;
+  readonly views: number;
 
   @IsBoolean()
   @Column() 
-  isPublished: boolean;
+  readonly isPublished: boolean;
 }
