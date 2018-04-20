@@ -32,41 +32,48 @@ export class ProjetService {
   }
 
   //requete
-  
-  async findAll_(page:number=0, limit:number = 10): Promise<any> {
+
+  async findAll_(page: number = 0, limit: number = 10): Promise<any> {
     const result = await this.ProjetRepository
       .createQueryBuilder("projet")
-      .select(["projet.id","projet.nom", "projet.description","projet.createdDate" ])
+      .select(["projet.id", "projet.nom", "projet.description", "projet.createdDate"])
       .orderBy({
         "projet.createdDate": "DESC"
       })
-      .skip(limit*page)
+      .skip(limit * page)
       .take(limit)
       .getManyAndCount();
 
-     return Promise.all( result )
+    return Promise.all(result)
       .then(data => {
-        return {page:page,limit:limit,totalsItem:data[1],data:data[0],error: 0, message: "OK"};
-    })
+        return { page: page, limit: limit, totalsItem: data[1], data: data[0], error: 0, message: "OK" };
+      })
   }
 
 
-  async findAll(page:number=0, limit:number = 10): Promise<any> {
+  async findAll(page: number = 0, limit: number = 10): Promise<any> {
     const result = await this.ProjetRepository
       .createQueryBuilder("projet")
-      .select(["projet.id","projet.nom", "projet.description","projet.createdDate","utilisateur.id","utilisateur.prenom","utilisateur.nom"])
+      .select(
+      ["projet.id", "projet.nom",
+        "projet.description", "projet.createdDate", 
+        "utilisateur.id", "utilisateur.prenom", 
+        "utilisateur.nom",
+        "roles.nom"
+      ])
       .orderBy({
         "projet.createdDate": "DESC"
       })
       .leftJoin("projet.utilisateur", "utilisateur")
-      .skip(limit*page)
+      .leftJoin("utilisateur.roles", "roles")
+      .skip(limit * page)
       .take(limit)
       .getManyAndCount();
 
-     return Promise.all( result )
+    return Promise.all(result)
       .then(data => {
-        return {page:page,limit:limit,totalsItem:data[1],data:data[0],error: 0, message: "OK"};
-    })
+        return { page: page, limit: limit, totalsItem: data[1], data: data[0], error: 0, message: "OK" };
+      })
   }
 
 
