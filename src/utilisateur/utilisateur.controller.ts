@@ -1,4 +1,4 @@
-import { UtilisateurSchema } from './utilisateur.schema';
+import { UtilisateurSchema, UtilisateurSchemaDev } from './utilisateur.schema';
 import { JoiValidationPipe } from './../pipe/joi-validation.pipe';
 import { Controller, Get, Post, Body, HttpStatus, Res, Put, Delete, Param, HttpException, ParseIntPipe, UsePipes } from '@nestjs/common';
 import { UtilisateurService } from './utilisateur.service';
@@ -71,9 +71,23 @@ export class UtilisateurController {
         message: "vérifier les champs"
       }, 404);
     }
+  }
 
-
-
+  @Post("dev")
+  @UsePipes(new JoiValidationPipe(UtilisateurSchemaDev))
+  async creates( @Res() res, @Body() utilisateurs: Utilisateur[]) {
+    try {
+      let result = await this.utilisateurService.creates(utilisateurs);
+      //let data = { data: result, error: 0, message: "Création fait" }
+      res.status(HttpStatus.CREATED).send(result);
+    } catch (error) {
+      throw new HttpException({
+        status: HttpStatus.FORBIDDEN,
+        error: 1,
+        console: error.sqlMessage,
+        message: "vérifier les champs"
+      }, 404);
+    }
   }
 
   @Put()

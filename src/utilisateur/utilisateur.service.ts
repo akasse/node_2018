@@ -14,7 +14,6 @@ export class UtilisateurService {
   ) {}
 
   async create(utilisateur: Utilisateur) {
-   // return utilisateur;
     return await this.utilisateurRepository.save(utilisateur);
   }
 
@@ -38,5 +37,8 @@ export class UtilisateurService {
     return await this.roleRepository.find();
   }
 
-  
+  //==============
+  async creates(utilisateurs: Utilisateur[]) {
+    return await this.utilisateurRepository.save(utilisateurs);
+  }
 }

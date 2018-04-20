@@ -54,9 +54,22 @@ export class PhotoController {
         message: "vérifier les champs"
       }, 404);
     }
+  }
 
-
-
+  @Post("dev")
+  async creates( @Res() res, @Body() photos: Photo[]) {
+    try {
+      let ph = await this.photoService.creates(photos);
+      let data = { data: ph, error: 0, message: "Création fait" }
+      res.status(HttpStatus.CREATED).send(data);
+    } catch (error) {
+      throw new HttpException({
+        status: HttpStatus.FORBIDDEN,
+        error: 1,
+        console: error.sqlMessage,
+        message: "vérifier les champs"
+      }, 404);
+    }
   }
 
   @Put()

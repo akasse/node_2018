@@ -1,0 +1,552 @@
+[
+  {
+    "prenom": "Carmela Parks",
+    "nom": "Cannon",
+    "email": "carmelacannon@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "USER"
+      }
+    ]
+  },
+  {
+    "prenom": "Green Dennis",
+    "nom": "Cabrera",
+    "email": "greencabrera@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "ADMIN"
+      }
+    ]
+  },
+  {
+    "prenom": "Sweeney Wood",
+    "nom": "Morton",
+    "email": "sweeneymorton@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "USER"
+      }
+    ]
+  },
+  {
+    "prenom": "Dixie Logan",
+    "nom": "Osborn",
+    "email": "dixieosborn@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Sykes Pugh",
+    "nom": "Hudson",
+    "email": "sykeshudson@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Knowles Glover",
+    "nom": "Stephenson",
+    "email": "knowlesstephenson@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Katharine Elliott",
+    "nom": "Atkins",
+    "email": "katharineatkins@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Warner Harmon",
+    "nom": "Stafford",
+    "email": "warnerstafford@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "ADMIN"
+      }
+    ]
+  },
+  {
+    "prenom": "Mccray Pratt",
+    "nom": "Cobb",
+    "email": "mccraycobb@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Mayer Cook",
+    "nom": "Hawkins",
+    "email": "mayerhawkins@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "USER"
+      }
+    ]
+  },
+  {
+    "prenom": "Richards Reeves",
+    "nom": "Sellers",
+    "email": "richardssellers@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Schneider Craft",
+    "nom": "Rush",
+    "email": "schneiderrush@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "USER"
+      }
+    ]
+  },
+  {
+    "prenom": "Carol Alexander",
+    "nom": "Hopkins",
+    "email": "carolhopkins@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "ADMIN"
+      }
+    ]
+  },
+  {
+    "prenom": "Sally Lester",
+    "nom": "Thompson",
+    "email": "sallythompson@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "USER"
+      }
+    ]
+  },
+  {
+    "prenom": "Maynard Reilly",
+    "nom": "Andrews",
+    "email": "maynardandrews@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "ADMIN"
+      }
+    ]
+  },
+  {
+    "prenom": "Inez Chapman",
+    "nom": "Welch",
+    "email": "inezwelch@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Ellison Armstrong",
+    "nom": "Mcleod",
+    "email": "ellisonmcleod@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Phillips Stephens",
+    "nom": "Pittman",
+    "email": "phillipspittman@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "ADMIN"
+      }
+    ]
+  },
+  {
+    "prenom": "Jolene Calderon",
+    "nom": "Wise",
+    "email": "jolenewise@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "USER"
+      }
+    ]
+  },
+  {
+    "prenom": "Conner Reynolds",
+    "nom": "Dixon",
+    "email": "connerdixon@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Tania Jackson",
+    "nom": "Rosario",
+    "email": "taniarosario@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Angelia Carrillo",
+    "nom": "Delacruz",
+    "email": "angeliadelacruz@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Dionne Dorsey",
+    "nom": "Myers",
+    "email": "dionnemyers@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "ADMIN"
+      }
+    ]
+  },
+  {
+    "prenom": "Marta Cooke",
+    "nom": "Gillespie",
+    "email": "martagillespie@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "ADMIN"
+      }
+    ]
+  },
+  {
+    "prenom": "Loretta Mckay",
+    "nom": "Montgomery",
+    "email": "lorettamontgomery@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "ADMIN"
+      }
+    ]
+  },
+  {
+    "prenom": "Leta Fulton",
+    "nom": "Pearson",
+    "email": "letapearson@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "USER"
+      }
+    ]
+  },
+  {
+    "prenom": "Nelda Vaughn",
+    "nom": "Yang",
+    "email": "neldayang@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Macias Small",
+    "nom": "Sutton",
+    "email": "maciassutton@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Sharlene Hyde",
+    "nom": "Richmond",
+    "email": "sharlenerichmond@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "USER"
+      }
+    ]
+  },
+  {
+    "prenom": "Ester Monroe",
+    "nom": "Sheppard",
+    "email": "estersheppard@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "USER"
+      }
+    ]
+  },
+  {
+    "prenom": "Gertrude Cherry",
+    "nom": "Strong",
+    "email": "gertrudestrong@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Carter Merritt",
+    "nom": "Jennings",
+    "email": "carterjennings@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Lorene Saunders",
+    "nom": "Everett",
+    "email": "loreneeverett@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Candace Whitaker",
+    "nom": "Joseph",
+    "email": "candacejoseph@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Owen Burks",
+    "nom": "Wolf",
+    "email": "owenwolf@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "ADMIN"
+      }
+    ]
+  },
+  {
+    "prenom": "Crawford Mitchell",
+    "nom": "Melendez",
+    "email": "crawfordmelendez@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Toni Mcgee",
+    "nom": "Warner",
+    "email": "toniwarner@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "USER"
+      }
+    ]
+  },
+  {
+    "prenom": "Jamie Mcclure",
+    "nom": "Hale",
+    "email": "jamiehale@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "ADMIN"
+      }
+    ]
+  },
+  {
+    "prenom": "Sharpe Molina",
+    "nom": "Coffey",
+    "email": "sharpecoffey@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "USER"
+      }
+    ]
+  },
+  {
+    "prenom": "Russell Mcfarland",
+    "nom": "Buckner",
+    "email": "russellbuckner@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "USER"
+      }
+    ]
+  },
+  {
+    "prenom": "Kim Camacho",
+    "nom": "Hood",
+    "email": "kimhood@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "ADMIN"
+      }
+    ]
+  },
+  {
+    "prenom": "Eloise Ferguson",
+    "nom": "Howell",
+    "email": "eloisehowell@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Ruiz Burke",
+    "nom": "Shaw",
+    "email": "ruizshaw@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "ADMIN"
+      }
+    ]
+  },
+  {
+    "prenom": "Evangelina Vincent",
+    "nom": "Gill",
+    "email": "evangelinagill@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Alexis Stevens",
+    "nom": "Goodwin",
+    "email": "alexisgoodwin@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "ADMIN"
+      }
+    ]
+  },
+  {
+    "prenom": "Michael Walter",
+    "nom": "Bowman",
+    "email": "michaelbowman@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "ADMIN"
+      }
+    ]
+  },
+  {
+    "prenom": "Chelsea Mclaughlin",
+    "nom": "Serrano",
+    "email": "chelseaserrano@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "USER"
+      }
+    ]
+  },
+  {
+    "prenom": "Liliana Lynn",
+    "nom": "Vasquez",
+    "email": "lilianavasquez@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "STAFF"
+      }
+    ]
+  },
+  {
+    "prenom": "Sears Schwartz",
+    "nom": "Neal",
+    "email": "searsneal@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "USER"
+      }
+    ]
+  },
+  {
+    "prenom": "Waller Meyer",
+    "nom": "Witt",
+    "email": "wallerwitt@halap.com",
+    "password": "passer",
+    "roles": [
+      {
+        "nom": "USER"
+      }
+    ]
+  }
+]

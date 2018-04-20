@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { IsString, IsInt, IsBoolean } from 'class-validator';
-@Entity()
+@Entity("photos")
 export class Photo {
   @PrimaryGeneratedColumn() readonly id: number;
 

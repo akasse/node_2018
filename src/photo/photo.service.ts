@@ -14,6 +14,10 @@ export class PhotoService {
     return await this.photoRepository.save(photo);
   }
 
+  async creates(photos: Photo[]) {
+    return await this.photoRepository.save(photos);
+  }
+
   async update(id:number,photo: Photo) {
     return await this.photoRepository.updateById(id,photo);
   }
