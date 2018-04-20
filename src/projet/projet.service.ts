@@ -51,13 +51,13 @@ export class ProjetService {
   }
 
 
-  async findAll(page: number = 0, limit: number = 10): Promise<any> {
+  async findAll_1(page: number = 0, limit: number = 10): Promise<any> {
     const result = await this.ProjetRepository
       .createQueryBuilder("projet")
       .select(
       ["projet.id", "projet.nom",
-        "projet.description", "projet.createdDate", 
-        "utilisateur.id", "utilisateur.prenom", 
+        "projet.description", "projet.createdDate",
+        "utilisateur.id", "utilisateur.prenom",
         "utilisateur.nom",
         "roles.nom"
       ])
@@ -75,6 +75,87 @@ export class ProjetService {
         return { page: page, limit: limit, totalsItem: data[1], data: data[0], error: 0, message: "OK" };
       })
   }
+
+  async findAll_2(page: number = 0, limit: number = 10): Promise<any> {
+    const result = await this.ProjetRepository
+      .createQueryBuilder("projet")
+      .select(
+      [
+        "projet.id",
+        "projet.nom",
+        "projet.type",
+        "projet.description",
+        "projet.createdDate",
+        "utilisateur.id",
+        "roles.nom"
+      ])
+      .where("projet.status = :status", { status: false })
+      .orderBy({
+        "projet.createdDate": "DESC"
+      })
+      .leftJoin("projet.utilisateur", "utilisateur")
+      .leftJoin("utilisateur.roles", "roles")
+      .skip(limit * page)
+      .take(limit)
+      .getManyAndCount();
+
+    return Promise.all(result)
+      .then(data => {
+        return { page: page, limit: limit, totalsItem: data[1], data: data[0], error: 0, message: "OK" };
+      })
+  }
+
+
+
+  async findAll_3(page: number = 0, limit: number = 10): Promise<any> {
+    const result = await this.ProjetRepository
+      .createQueryBuilder("projet")
+      .select(
+      [
+        "projet.id",
+        "projet.nom",
+        "projet.type",
+        "projet.description",
+        "projet.createdDate",
+        "utilisateur.id",
+        "roles.nom"
+      ])
+      .where("projet.status = :status", { status: true })
+      .andWhere("roles.nom = :role", { role: "ADMIN" })
+      .orderBy({
+        "projet.createdDate": "DESC"
+      })
+      .leftJoin("projet.utilisateur", "utilisateur")
+      .leftJoin("utilisateur.roles", "roles")
+      .skip(limit * page)
+      .take(limit)
+      .getManyAndCount();
+
+    return Promise.all(result)
+      .then(data => {
+        return { page: page, limit: limit, totalsItem: data[1], data: data[0], error: 0, message: "OK" };
+      })
+  }
+
+  async findAll(page: number = 0, limit: number = 10): Promise<any> {
+    const result = await this.ProjetRepository
+      .manager.query(`
+        SELECT type , COUNT(type) as 'nb'
+        FROM nestdb.ak_projet
+        WHERE status=1
+        GROUP BY type
+        LIMIT 10;
+      `);
+
+    return result;
+    /*
+        return Promise.all(result)
+          .then(data => {
+            return {  data: data, error: 0, message: "OK" };
+          })
+          */
+  }
+
 
 
 
