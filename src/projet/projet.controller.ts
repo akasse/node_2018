@@ -41,7 +41,7 @@ export class ProjetController {
     }
   }
 
- @Post()
+ @Post("add")
  @UsePipes(new JoiValidationPipe(ProjetSchema))
   async create( @Res() res, @Body() projet: Projet) {
     try {

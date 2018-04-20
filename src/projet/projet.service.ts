@@ -31,14 +31,9 @@ export class ProjetService {
     return await this.ProjetRepository.findOneById(id);
   }
 
-  async findAll_(): Promise<Projet[]> {
-    return await this.ProjetRepository.find();
-  }
-
   //requete
   
-  async findAll(page:number=0, limit:number = 10): Promise<any> {
-    
+  async findAll_(page:number=0, limit:number = 10): Promise<any> {
     const result = await this.ProjetRepository
       .createQueryBuilder("projet")
       .select(["projet.id","projet.nom", "projet.description","projet.createdDate" ])
@@ -55,6 +50,24 @@ export class ProjetService {
     })
   }
 
+
+  async findAll(page:number=0, limit:number = 10): Promise<any> {
+    const result = await this.ProjetRepository
+      .createQueryBuilder("projet")
+      .select(["projet.id","projet.nom", "projet.description","projet.createdDate","utilisateur.id","utilisateur.prenom","utilisateur.nom"])
+      .orderBy({
+        "projet.createdDate": "DESC"
+      })
+      .leftJoin("projet.utilisateur", "utilisateur")
+      .skip(limit*page)
+      .take(limit)
+      .getManyAndCount();
+
+     return Promise.all( result )
+      .then(data => {
+        return {page:page,limit:limit,totalsItem:data[1],data:data[0],error: 0, message: "OK"};
+    })
+  }
 
 
 
