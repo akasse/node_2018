@@ -1,7 +1,7 @@
 import { Roles } from './../guard/roles.decorator';
 import { RolesGuard } from './../guard/roles.guard';
 import { JoiValidationPipe } from './../pipe/joi-validation.pipe';
-import { Controller, Get, Post, Body, HttpStatus, Res, Put, Delete, Param, HttpException, UsePipes, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, HttpStatus, Res, Put, Delete, Param, HttpException, UsePipes, UseGuards, Req } from '@nestjs/common';
 import { ProjetService } from './projet.service';
 import { Projet } from './projet.entity';
 import { ProjetSchema } from './projet.schema';
@@ -16,9 +16,10 @@ export class ProjetController {
   @Post("getAll")
   @Roles("STAFF","ADMIN","USER")
   @UsePipes(new JoiValidationPipe(PaginationSchema))
-  async findAll(@Res() res, @Body() pagination: Pagination) {
+  async findAll(@Req() req,@Res() res, @Body() pagination: Pagination) {
     try {
-      let data = await this.projetService.findAll(pagination.page,pagination.limit);
+      const {user} = req.user;
+      let data = await this.projetService.findAll(pagination.page,pagination.limit,user);
       res.status(HttpStatus.OK).send(data);
     } catch (error) {
       throw new HttpException({

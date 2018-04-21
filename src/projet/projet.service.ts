@@ -2,6 +2,7 @@ import { Component } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, Transaction } from 'typeorm';
 import { Projet } from './projet.entity';
+import { Utilisateur } from '../utilisateur/utilisateur.entity';
 
 @Component()
 export class ProjetService {
@@ -106,7 +107,8 @@ export class ProjetService {
 
 
 
-  async findAll_3(page: number = 0, limit: number = 10): Promise<any> {
+  async findAll(page: number = 0, limit: number = 10,user:Utilisateur): Promise<any> {
+    console.log("==USER===",user)
     const result = await this.ProjetRepository
       .createQueryBuilder("projet")
       .select(
@@ -121,6 +123,7 @@ export class ProjetService {
       ])
       .where("projet.status = :status", { status: true })
       .andWhere("roles.nom = :role", { role: "ADMIN" })
+      .andWhere("utilisateur.email = :email", { email: user.email })
       .orderBy({
         "projet.createdDate": "DESC"
       })
@@ -136,7 +139,7 @@ export class ProjetService {
       })
   }
 
-  async findAll(page: number = 0, limit: number = 10): Promise<any> {
+  async findAll__(page: number = 0, limit: number = 10): Promise<any> {
     const result = await this.ProjetRepository
       .manager.query(`
         SELECT type , COUNT(type) as 'nb'
