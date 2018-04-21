@@ -16,8 +16,8 @@ export class AuthService implements IAuthService {
   ) { }
 
   private _options: IJwtOptions = {
-    algorithm: 'HS256',
-    expiresIn: '2 days',
+    algorithm: process.env.JWT_ALGORITHM || 'HS256',
+    expiresIn: process.env.JWT_EXPIRESIN ||'2 days',
     jwtid: process.env.JWT_ID || '',
   };
 
@@ -60,11 +60,31 @@ export class AuthService implements IAuthService {
     }
   }
 
-  public async checkToken(id,email){
-    const user = await this.utilisateurRepository.findOneById(id);
-    console.log("========", user)
-    return user;
+  public async checkToken(id:string,email:string): Promise<any>{
+    let user = await this.utilisateurRepository
+    .createQueryBuilder("user")
+    .select(
+      [
+        "user.id",
+        "user.prenom",
+        "user.nom",
+        "user.email",
+        "roles.nom"
+      ])
+    .where("user.status = :status", { status: true })
+    .andWhere("user.id = :id", { id: id })
+    .leftJoin("user.roles", "roles")
+    .getOne();
+    
+    return Promise.resolve(user)
+    .then(data => {
+      return data;
+    })
+    .catch(error => {
+      return 1;
+    });
   }
+
   public async checkToken_(id,email){
     const user: any = await this.utilisateurRepository
     .find({
