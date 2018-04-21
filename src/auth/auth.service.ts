@@ -33,17 +33,19 @@ export class AuthService implements IAuthService {
     console.log("========", login)
     const user: any = await this.utilisateurRepository
       .find({
-        select: ["id", "email"],
+        select: ["email"],
         where: {
           status: true,
           email: login.email,
           password: crypto.createHmac('sha256', login.password).digest('hex'),
         },
       }).then(data => {
-        if (data.length == 0) {
+        console.log("========", data)
+        console.log("====data[0].email====", data[0].email)
+        if (data[0].email == undefined) {
           return 1;
         } else {
-          return data;
+          return data[0].email;
         }
       }).catch(
       error => {
@@ -54,9 +56,9 @@ export class AuthService implements IAuthService {
       return user;
     } else {
       const payload = {
-        user
+        email:user
       };
-      return await jwt.sign(payload, process.env.JWT_KEY || '', this._options);
+      return await jwt.sign(payload, process.env.JWT_KEY || 'akasse@*', this._options);
     }
   }
 
@@ -83,6 +85,17 @@ export class AuthService implements IAuthService {
     .catch(error => {
       return 1;
     });
+  }
+
+
+  public async validateUser(email): Promise<boolean> {
+    try {
+      const user = await this.utilisateurRepository.findOne({ email: email });
+      console.log("===USER1==",user)
+      return user ? true : false;
+    } catch (err) {
+      return false;
+    }
   }
 
   public async checkToken_(id,email){

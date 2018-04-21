@@ -3,16 +3,18 @@ import { Controller, Get, Post, Body, HttpStatus, Res, Put, Delete, Param, HttpE
 import { ProjetService } from './projet.service';
 import { Projet } from './projet.entity';
 import { ProjetSchema } from './projet.schema';
+import { PaginationSchema } from './projet.schema';
+import { Pagination } from './projet.schema';
 
 @Controller('projets')
 export class ProjetController {
   constructor(private readonly projetService: ProjetService) { }
 
-  @Get()
-  async findAll(@Res() res) {
+  @Post("getAll")
+  @UsePipes(new JoiValidationPipe(PaginationSchema))
+  async findAll(@Res() res, @Body() pagination: Pagination) {
     try {
-      let ph = await this.projetService.findAll();
-      let data = { data: ph, error: 0, message: "OK" }
+      let data = await this.projetService.findAll(pagination.page,pagination.limit);
       res.status(HttpStatus.OK).send(data);
     } catch (error) {
       throw new HttpException({
