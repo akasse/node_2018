@@ -19,6 +19,7 @@ export class ProjetService {
   async creates(projet: Projet[]) {
     return await this.ProjetRepository.save(projet);
   }
+
   async update(id: string, projet: Projet) {
     return await this.ProjetRepository.updateById(id, projet);
   }
@@ -108,7 +109,7 @@ export class ProjetService {
 
 
   async findAll(page: number = 0, limit: number = 10,user:Utilisateur): Promise<any> {
-    console.log("==USER===",user)
+    console.log("==USER==1=",user.email)
     const result = await this.ProjetRepository
       .createQueryBuilder("projet")
       .select(
@@ -122,7 +123,6 @@ export class ProjetService {
         "roles.nom"
       ])
       .where("projet.status = :status", { status: true })
-      .andWhere("roles.nom = :role", { role: "ADMIN" })
       .andWhere("utilisateur.email = :email", { email: user.email })
       .orderBy({
         "projet.createdDate": "DESC"

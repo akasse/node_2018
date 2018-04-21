@@ -4,7 +4,7 @@ import { JoiValidationPipe } from './../pipe/joi-validation.pipe';
 import { Controller, Get, Post, Body, HttpStatus, Res, Put, Delete, Param, HttpException, UsePipes, UseGuards, Req } from '@nestjs/common';
 import { ProjetService } from './projet.service';
 import { Projet } from './projet.entity';
-import { ProjetSchema } from './projet.schema';
+import { ProjetSchema, ProjetSchemaDev } from './projet.schema';
 import { PaginationSchema } from './projet.schema';
 import { Pagination } from './projet.schema';
 
@@ -63,10 +63,24 @@ export class ProjetController {
         message: "vérifier les champs"
       }, 404);
     }
-
-
-
   }
+
+  @Post("/dev")
+  @UsePipes(new JoiValidationPipe(ProjetSchemaDev))
+   async creates( @Res() res, @Body() projet: Projet[]) {
+     try {
+       let result = await this.projetService.creates(projet);
+       //let data = { data: ph, error: 0, message: "Création fait" }
+       res.status(HttpStatus.CREATED).send(result);
+     } catch (error) {
+       throw new HttpException({
+         status: HttpStatus.FORBIDDEN,
+         error: 1,
+         console: error.sqlMessage,
+         message: "vérifier les champs"
+       }, 404);
+     }
+   }
 
   @Put()
   async update( @Res() res, @Body() projet: Projet) {
