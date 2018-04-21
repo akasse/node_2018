@@ -56,7 +56,7 @@ export class UtilisateurController {
     }
   }
 
-  @Post()
+  @Post("add")
   @UsePipes(new JoiValidationPipe(UtilisateurSchema))
   async create( @Res() res, @Body() utilisateur: Utilisateur) {
     try {

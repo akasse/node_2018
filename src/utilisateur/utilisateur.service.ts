@@ -1,9 +1,9 @@
 import { Component } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, Transaction } from 'typeorm';
 import { Utilisateur } from './utilisateur.entity';
 import { Role } from './role.entity';
-
+import * as crypto from 'crypto';
 @Component()
 export class UtilisateurService {
   constructor(
@@ -15,6 +15,7 @@ export class UtilisateurService {
 
   async create(utilisateur: Utilisateur) {
    // return utilisateur;
+    utilisateur.password = crypto.createHmac('sha256', utilisateur.password).digest('hex');
     return await this.utilisateurRepository.save(utilisateur);
   }
 

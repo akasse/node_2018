@@ -1,9 +1,8 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany,
-   JoinTable, UpdateDateColumn, CreateDateColumn } from 'typeorm';
-//import { IsString, IsInt, IsBoolean } from 'class-validator';
-import { IsEmail, IsString, IsInt, IsBoolean, IsEnum } from '@nestjs/common/node_modules/class-validator';
+   JoinTable, UpdateDateColumn, CreateDateColumn, BeforeInsert } from 'typeorm';
 import { Projet } from '../projet/projet.entity';
 import { Role } from './role.entity';
+import * as crypto from 'crypto';
 
 @Entity("ak_utilisateur")
 export class Utilisateur {
@@ -12,26 +11,26 @@ export class Utilisateur {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @IsString()
+  
   @Column({ length: 100 })
-  readonly prenom: string;
+   prenom: string;
 
-  @IsString()
+  
   @Column({ length: 50 })
-  readonly nom: string;
+   nom: string;
 
-  @IsEmail()
+  
   @Column({ length: 100 , unique: true })
-  readonly email: string;
+   email: string;
 
 
-  @IsString()
+  
   @Column()
-  readonly password: string;
+   password: string;
 
-  @IsBoolean()
+ 
   @Column({nullable:false,default:false})
-  readonly status: boolean;
+   status: boolean;
 
   @OneToMany(type => Projet, projet => projet.utilisateur, {
     cascadeInsert: true,
@@ -51,5 +50,7 @@ export class Utilisateur {
   })
   @JoinTable({ name: 'ak_users_roles' })
   roles: Role[];
+
+
 
 }
