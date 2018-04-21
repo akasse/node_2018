@@ -1,3 +1,4 @@
+import { AuthService } from './../auth/auth.service';
 import { AuthMiddleware } from './../auth/auth.middleware';
 import { Module, RequestMethod } from '@nestjs/common';
 import { UtilisateurService } from './utilisateur.service';
@@ -9,7 +10,7 @@ import { MiddlewaresConsumer } from '@nestjs/common/interfaces';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Utilisateur,Role])],
-  components: [UtilisateurService],
+  components: [UtilisateurService, AuthService],
   controllers: [UtilisateurController],
 })
 export class UtilisateurModule {

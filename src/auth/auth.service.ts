@@ -40,19 +40,15 @@ export class AuthService implements IAuthService {
           password: crypto.createHmac('sha256', login.password).digest('hex'),
         },
       }).then(data => {
-        console.log("========", data)
         if (data.length == 0) {
           return 1;
         } else {
-          console.log("=====ok===")
           return data;
         }
       }).catch(
       error => {
-        console.log("========", error)
         return 1
-      }
-      );
+      });
 
     if (user == 1) {
       return user;
@@ -64,4 +60,34 @@ export class AuthService implements IAuthService {
     }
   }
 
+  public async checkToken(id,email){
+    const user = await this.utilisateurRepository.findOneById(id);
+    console.log("========", user)
+    return user;
+  }
+  public async checkToken_(id,email){
+    const user: any = await this.utilisateurRepository
+    .find({
+      select: ["id", "email","prenom"],
+      where: {
+        status: true,
+        id: id,
+        email:email,
+      },
+    }).then(data => {
+      console.log("========", data)
+      if (data.length == 0) {
+        return 1;
+      } else {
+        console.log("=====ok===")
+        return data;
+      }
+    }).catch(
+    error => {
+      console.log("========", error)
+      return 1
+    });
+
+   return user;
+  }
 }
