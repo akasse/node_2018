@@ -21,7 +21,7 @@ export class JwtStrategy extends Strategy {
       console.log("====payload====",payload)
     const isValid = await this.authService.validateUser(payload.email);
     if (!isValid) {
-      return done('Unauthorized', false);
+      return done('Unauthorized ak', false);
     }
     done(null, payload);
   }
