@@ -13,12 +13,11 @@ export class AuthController {
   async authentification( @Res() res, @Body() login: Login) {
     try {
       let result: any = await this.authService.sign(login);
-      console.log("==R==",result)
       let data: any = {};
       if (result == 1) {
         data = { error: 1, message: "Login ou mot de passe incorrect" }
       } else {
-        data = { data: result, error: 0, message: "Création fait" }
+        data = { data: result, error: 0, message: "OK" }
       }
       res.status(HttpStatus.OK).send(data);
     } catch (error) {

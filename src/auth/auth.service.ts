@@ -30,18 +30,15 @@ export class AuthService implements IAuthService {
   }
 
   public async sign(login: Login): Promise<string> {
-    console.log("========", login)
     const user: any = await this.utilisateurRepository
       .find({
         select: ["email"],
         where: {
           status: true,
           email: login.email,
-          password: crypto.createHmac('sha256', login.password).digest('hex'),
+          password: crypto.createHmac(process.env.CRYPTO_KEY || 'sha256', login.password).digest(process.env.CRYPTO_DIGEST ||'hex'),
         },
       }).then(data => {
-        console.log("========", data)
-        console.log("====data[0].email====", data[0].email)
         if (data[0].email == undefined) {
           return 1;
         } else {
