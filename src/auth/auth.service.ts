@@ -38,11 +38,18 @@ export class AuthService implements IAuthService {
           email: login.email,
           password: crypto.createHmac(process.env.CRYPTO_KEY || 'sha256', login.password).digest(process.env.CRYPTO_DIGEST ||'hex'),
         },
+        join: {
+          alias: "user",
+          leftJoinAndSelect: {
+          "roles": "user.roles"
+          }
+          }
       }).then(data => {
+        console.log("==USER==",data)
         if (data[0].email == undefined) {
           return 1;
         } else {
-          return data[0].email;
+          return data[0];
         }
       }).catch(
       error => {
@@ -53,71 +60,22 @@ export class AuthService implements IAuthService {
       return user;
     } else {
       const payload = {
-        email:user
+        user
       };
       return await jwt.sign(payload, process.env.JWT_KEY || 'akasse@*', this._options);
     }
   }
 
-  public async checkToken(id:string,email:string): Promise<any>{
-    let user = await this.utilisateurRepository
-    .createQueryBuilder("user")
-    .select(
-      [
-        "user.id",
-        "user.prenom",
-        "user.nom",
-        "user.email",
-        "roles.nom"
-      ])
-    .where("user.status = :status", { status: true })
-    .andWhere("user.id = :id", { id: id })
-    .leftJoin("user.roles", "roles")
-    .getOne();
-    
-    return Promise.resolve(user)
-    .then(data => {
-      return data;
-    })
-    .catch(error => {
-      return 1;
-    });
-  }
-
+ 
 
   public async validateUser(email): Promise<boolean> {
     try {
       const user = await this.utilisateurRepository.findOne({ email: email });
-      console.log("===USER1==",user)
       return user ? true : false;
     } catch (err) {
       return false;
     }
   }
 
-  public async checkToken_(id,email){
-    const user: any = await this.utilisateurRepository
-    .find({
-      select: ["id", "email","prenom"],
-      where: {
-        status: true,
-        id: id,
-        email:email,
-      },
-    }).then(data => {
-      console.log("========", data)
-      if (data.length == 0) {
-        return 1;
-      } else {
-        console.log("=====ok===")
-        return data;
-      }
-    }).catch(
-    error => {
-      console.log("========", error)
-      return 1
-    });
-
-   return user;
-  }
+  
 }
