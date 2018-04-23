@@ -6,8 +6,9 @@ import { PhotoModule } from './photo/photo.module';
 
 import { ProjetModule } from './projet/projet.module';
 import { UtilisateurModule } from './utilisateur/utilisateur.module';
+import { EventUserModule } from './event-user/event-user.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(),AuthModule, PhotoModule, UtilisateurModule,ProjetModule],
+  imports: [TypeOrmModule.forRoot(),AuthModule, PhotoModule, UtilisateurModule,ProjetModule, EventUserModule],
 })
 export class ApplicationModule {}

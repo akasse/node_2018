@@ -29,7 +29,6 @@ export class ProjetController {
         message: "Probléme au niveau du serveur"
       }, 404);
     }
-    
   }
 
   @Get(":id")
